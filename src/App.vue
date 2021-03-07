@@ -1,11 +1,14 @@
 <template>
-  <h1>hello</h1>
+  <Hello name="dou" />
 </template>
 
 <script>
+import Hello from "./components/Hello";
 export default {
   name: "App",
-  components: {}
+  components: {
+    Hello
+  }
 };
 </script>
 
