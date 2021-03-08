@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header title="Todo List" />
+    <AddTodo @add-todo="addTodo" />
     <Todos
       @toggle-reminder="toggleReminder"
       @delete-todo="deleteTodo"
@@ -12,12 +13,14 @@
 <script>
 import Header from "./components/Header";
 import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
 
 export default {
   name: "App",
   components: {
     Header,
-    Todos
+    Todos,
+    AddTodo
   },
   data() {
     return {
@@ -34,6 +37,9 @@ export default {
       this.todos = this.todos.map(todo =>
         todo.id === id ? { ...todo, reminder: !todo.reminder } : todo
       );
+    },
+    addTodo(todo) {
+      this.todos = [...this.todos, todo];
     }
   },
   created() {
