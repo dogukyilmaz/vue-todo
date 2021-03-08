@@ -1,16 +1,46 @@
 <template>
   <div class="container">
     <Header title="Todo List" />
+    <Todos :todos="todos" />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
+import Todos from "./components/Todos";
 
 export default {
   name: "App",
   components: {
-    Header
+    Header,
+    Todos
+  },
+  data() {
+    return {
+      todos: []
+    };
+  },
+  created() {
+    this.todos = [
+      {
+        id: 1,
+        content: "Somethin about hospital.",
+        date: "01-02-2021",
+        reminder: true
+      },
+      {
+        id: 2,
+        content: "Lorem ipsum dolor.",
+        date: "21-05-2021",
+        reminder: false
+      },
+      {
+        id: 3,
+        content: "Met abet about etwq.",
+        date: "06-02-2021",
+        reminder: false
+      }
+    ];
   }
 };
 </script>
