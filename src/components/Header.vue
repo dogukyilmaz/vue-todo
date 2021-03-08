@@ -1,7 +1,11 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button title="Add Todo" color="green" />
+    <Button
+      @button-click="$emit('toggle-add-todo')"
+      :title="showTodoField ? 'Close' : 'Add Todo'"
+      :color="!showTodoField ? 'green' : 'rgb(88, 13, 73)'"
+    />
   </header>
 </template>
 
@@ -11,11 +15,12 @@ import Button from "./Button";
 export default {
   name: "No name",
   props: {
-    title: String
+    title: String,
     // title: {
     //   type: String,
     //   default: "No name"
     // }
+    showTodoField: Boolean
   },
   components: {
     Button

@@ -1,7 +1,14 @@
 <template>
   <div class="container">
-    <Header title="Todo List" />
-    <AddTodo @add-todo="addTodo" />
+    <Header
+      :showTodoField="showTodoField"
+      @toggle-add-todo="toggleAddTodo"
+      title="Todo List"
+    />
+
+    <div v-show="showTodoField">
+      <AddTodo @add-todo="addTodo" />
+    </div>
     <Todos
       @toggle-reminder="toggleReminder"
       @delete-todo="deleteTodo"
@@ -24,7 +31,8 @@ export default {
   },
   data() {
     return {
-      todos: []
+      todos: [],
+      showTodoField: false
     };
   },
   methods: {
@@ -40,6 +48,9 @@ export default {
     },
     addTodo(todo) {
       this.todos = [...this.todos, todo];
+    },
+    toggleAddTodo() {
+      this.showTodoField = !this.showTodoField;
     }
   },
   created() {
