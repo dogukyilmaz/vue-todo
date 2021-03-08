@@ -1,6 +1,12 @@
 <template>
-  <div class="todo">
-    <h4>{{ todo.content }}</h4>
+  <div
+    @dblclick="$emit('toggle-reminder', todo.id)"
+    :class="[todo.reminder ? 'reminder' : '', 'todo']"
+  >
+    <h4>
+      {{ todo.content }}
+      <i @click="$emit('delete-todo', todo.id)" class="fas fa-times"></i>
+    </h4>
     <small>{{ todo.date }}</small>
   </div>
 </template>
@@ -22,6 +28,10 @@ export default {
   font-weight: 500;
 }
 
+i {
+  color: rgb(88, 13, 73);
+}
+
 .todo {
   background: rgb(251, 244, 244);
   margin: 5px;
@@ -31,6 +41,6 @@ export default {
 }
 
 .todo.reminder {
-  border-left: 6px solid greenyellow;
+  border-left: 6px solid rgb(88, 13, 73);
 }
 </style>
